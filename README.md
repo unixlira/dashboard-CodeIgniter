@@ -17,6 +17,15 @@ CREATE TABLE db_OM30;
 ```
 
 Após criação do Banco de Dados rodar a Query das tabelas na pasta DumpMySQL que se encontra na Raiz do projeto
+Alterar o arquivo database.php que fica no diretório applications/config 
+```
+	Alterar as seguintes linhas
+	'hostname' => 'localhost',
+	'username' => 'root',
+	'password' => 'suasenhamysql',
+	'database' => 'db_OM30',
+```
+
 
 Como Usar
 =====
