@@ -29,12 +29,13 @@ CREATE TABLE `uniformes` (
   `tamBlusa` varchar(45) DEFAULT NULL,
   `tamCalca` varchar(45) DEFAULT NULL,
   `tamBermuda` varchar(45) DEFAULT NULL,
+  `status` varchar(45) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK__db_OM30_alunos_db_OM30_alunos_uniforme` (`id_aluno`),
   CONSTRAINT `FK__db_OM30_alunos_db_OM30_alunos_uniforme` FOREIGN KEY (`id_aluno`) REFERENCES `alunos` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,6 +44,7 @@ CREATE TABLE `uniformes` (
 
 LOCK TABLES `uniformes` WRITE;
 /*!40000 ALTER TABLE `uniformes` DISABLE KEYS */;
+INSERT INTO `uniformes` VALUES (1,1,'GG','GG','48','48','1','2020-03-25 00:41:56','2020-03-25 00:41:56'),(2,6,'10','10','P','P','2','2020-03-25 10:50:07','2020-03-25 10:50:07');
 /*!40000 ALTER TABLE `uniformes` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-03-24 21:57:31
+-- Dump completed on 2020-03-25 16:15:48

@@ -42,7 +42,7 @@ CREATE TABLE `alunos` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`,`ra`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -51,7 +51,7 @@ CREATE TABLE `alunos` (
 
 LOCK TABLES `alunos` WRITE;
 /*!40000 ALTER TABLE `alunos` DISABLE KEYS */;
-INSERT INTO `alunos` VALUES (1,'José Update Lira','Shirleine Silveira Lira ','','1982-09-17','28660338','22409621666','aaab9d2091e3748e','03187040','Rua Mogi Mirim','20','Altos','Móoca','São paulo','Selecione o Estado','joserobertolira@gmail.com','2020-03-24 19:12:58','2020-03-24 19:41:38'),(6,'Guilherme Fachola Lira','Fabiana Fachola Lira','','2010-01-17','487676721X','222.222.2222222-22','5855c6f7ed892999','03.187-040','Rua Mogi Mirim','20','','Móoca','São Paulo','SP','guilhermefacholalira@gmail.com','2020-03-24 21:29:50','2020-03-24 21:29:50');
+INSERT INTO `alunos` VALUES (1,'José Roberto Lira','Shirleine Silveira Lira ','euhack.png','1982-09-17','28660338','22409621666','aaab9d2091e3748e','03187040','Rua Mogi Mirim','20','Altos','Móoca','São paulo','Selecione o Estado','joserobertolira@gmail.com','2020-03-24 19:12:58','2020-03-24 23:19:40'),(6,'Guilherme Fachola Lira','Fabiana Fachola Lira','homer_perfil_400x400.jpg','2010-01-17','487676721X','222.222.2222222-22','5855c6f7ed892999','03.187-040','Rua Mogi Mirim','20','','Móoca','São Paulo','Selecione o Estado','guilhermefacholalira@gmail.com','2020-03-24 21:29:50','2020-03-25 11:53:04'),(7,'Giovanna Fachola Lira','Fabiana Fachola Lira','IMG_20180701_125741613_HDR.jpg','2005-12-27','28660338','224.096.218-64','c055369539f50320','03.187-040','Rua Mogi Mirim','20','','Vila Bertioga','São Paulo','Selecione o Estado','giovannalira@gmail.com','2020-03-24 22:25:07','2020-03-25 11:54:02'),(8,'Manuella Fachola Lira','Fabiana Fachola Lira','homer_perfil_400x400.jpg','2010-03-27','487676721X','224.096.216-66','a6ed3c5ab72770d1','03.187-040','Rua Mogi Mirim','20','','Vila Bertioga','São Paulo','SP','manu@gmail.com','2020-03-24 22:44:54','2020-03-24 22:44:54');
 /*!40000 ALTER TABLE `alunos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -64,4 +64,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-03-24 21:57:31
+-- Dump completed on 2020-03-25 16:15:48
