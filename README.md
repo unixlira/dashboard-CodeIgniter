@@ -1,4 +1,4 @@
-DashBord de Alunos OM30
+Painel ADM de Alunos OM30
 ==========
 
 Sistem de Cadastro de alunos feito em codeigniter com validação de formulário, máscara de CPF e CEP com webservice de cep, criação, edição,exclusão e listagem de alunos.
