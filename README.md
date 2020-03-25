@@ -16,6 +16,8 @@ Instalação Banco de Dados
 CREATE TABLE db_OM30;
 ```
 
+Após criação do Banco de Dados rodar a Query das tabelas na pasta DumpMySQL que se encontra na Raiz do projeto
+
 Como Usar
 =====
 
