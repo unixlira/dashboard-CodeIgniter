@@ -240,6 +240,103 @@ class Alunos extends CI_Controller
 		$data['alunos'] = $this->aluno->getAluno();
 		$data['uniformes'] = $this->aluno->getUniformes();
 
-		$this->load->view('uniformes', $data);
+		$this->load->view('uniformes', array('alunos'=>$data['alunos'],'uniformes' => $data['uniformes']));
 	}
+
+	function createUniform()
+	{
+		$data = [];
+		$postData = [];
+		date_default_timezone_set('America/Sao_Paulo');
+		$this->load->helper('form');
+		$this->load->library('form_validation');
+
+		if($this->input->post('aluno')){
+
+			$postData = [
+				'id_aluno'   => $this->input->post('aluno'),
+				'tamCamisa'  => $this->input->post('tamCamisa'),
+				'tamBlusa'   => $this->input->post('tamBlusa'),
+				'tamCalca'   => $this->input->post('tamCalca'),
+				'tamBermuda' => $this->input->post('tamBermuda'),
+				'status'     => 2,
+				'created_at' => date('Y-m-d H:i:s'),
+				'updated_at' => date('Y-m-d H:i:s')
+			];
+
+			
+			$insert = $this->aluno->createUniforme($postData);
+
+			if($insert){
+				$this->session->set_userdata('success_msg','Aluno Cadastrado com Sucesso!');
+				redirect('/uniformes');
+			}else{
+				$data['error_msg'] = 'Algo deu errado, contate o Administrador!';
+			}
+		}
+
+		$data = ['aluno' => [], 'estado' => []];
+
+		$aluno['aluno'] = $postData;
+		$data['action'] = 'Create';
+		$data['alunos'] = $this->aluno->getAluno();
+		$data['uniformes'] = $this->aluno->getUniformes();
+
+
+		$this->load->view('uniCreate', $data);
+	}
+
+	function updateUniforme($id)
+	{
+
+		$data = [];
+		$postData = [];
+		date_default_timezone_set('America/Sao_Paulo');
+
+		if($this->input->post('aluno')){
+
+			$postData = [
+				'id_aluno'   => $this->input->post('aluno'),
+				'tamCamisa'  => $this->input->post('tamCamisa'),
+				'tamBlusa'   => $this->input->post('tamBlusa'),
+				'tamCalca'   => $this->input->post('tamCalca'),
+				'tamBermuda' => $this->input->post('tamBermuda'),
+				'status'     => 2,
+				'updated_at' => date('Y-m-d H:i:s')
+			];
+
+			$update = $this->aluno->editUniforme($postData, $id);
+
+			if($update){
+				$this->session->set_userdata('success_msg','Aluno Cadastrado com Sucesso!');
+				redirect('/uniformes');
+			}else{
+				$data['error_msg'] = 'Algo deu errado, contate o Administrador!';
+			}
+		}
+
+		$data = ['aluno' => [], 'uniformes' => []];
+
+		$aluno['aluno'] = $postData;
+		$data['action'] = 'Create';
+		$data['alunos'] = $this->aluno->getAluno();
+		$data['uniformes'] = $this->aluno->getUniformes();
+
+
+		$this->load->view('uniEdit', $data);
+	}
+
+	function deleteUniforme($id)
+	{
+		$delete = $this->aluno->delUniforme($id);
+
+		if($delete){
+			$this->session->set_userdata('success_msg','Aluno excluído com Sucesso!');
+			redirect('uniformes');
+		}else{
+			$data['error_msg'] = 'Algo deu errado, contate o Administrador!';
+		}
+		redirect('/uniformes');
+	}
+
 }

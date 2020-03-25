@@ -98,7 +98,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?=site_url('alunos/uniformes/create')?>" class="nav-link">
+                <a href="<?=site_url('uniformes/create')?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Cadastrar Uniformes</p>
                 </a>

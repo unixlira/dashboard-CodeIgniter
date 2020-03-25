@@ -66,4 +66,39 @@ class Aluno extends CI_Model
 
 		return $query->result_array();
 	}
+
+
+	//update uniformes
+	function editUniforme($data, $id)
+	{
+		if( $data != null && $id != null){
+			$this->db->update('uniformes', $data, array('id' => $id));
+			return true ;
+		} else{
+			return false;
+		}
+	}
+
+	//create uniformes
+	function createUniforme($data=NULL)
+	{
+		if($data != NULL){
+			
+			$insert = $this->db->insert('uniformes',$data);
+			if($insert){
+				return $this->db->insert_id();
+			} else{
+				return false;
+			}
+		}
+	}
+
+		//delete aluno
+		function delUniforme($id)
+		{
+			if( $id != null ){
+				$delete = $this->db->delete('uniformes',array('id' => $id));
+				return $delete ? true : false;
+			}
+		}
 }
