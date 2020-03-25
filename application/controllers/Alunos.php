@@ -46,7 +46,7 @@ class Alunos extends CI_Controller
 	{
 		$data = [];
 		$postData = [];
-		$date = new \DateTime('now');
+		date_default_timezone_set('America/Sao_Paulo');
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 
@@ -81,13 +81,29 @@ class Alunos extends CI_Controller
 				'cidade'         => $this->input->post('cidade'),
 				'estado'         => $this->input->post('estado'),
 				'email'          => $this->input->post('email'),
-				'created_at'     => $date->format('Y-m-d H:i:s'),
-				'updated_at'     => $date->format('Y-m-d H:i:s'),
+				'created_at'     => date('Y-m-d H:i:s'),
+				'updated_at'     => date('Y-m-d H:i:s')
 			];
 
 			
 			//check validação
 			if($this->form_validation->run() == true){
+
+				$config['upload_path']          = 'images';
+                $config['allowed_types']        = 'gif|jpg|png';
+
+				$this->upload->initialize($config);
+
+                if (!$this->upload->do_upload('foto')){
+					$errors = $this->upload->display_errors();
+					$this->session->set_flashdata('create', $errors);
+					redirect('/alunos');
+                }else{
+					$foto = $this->upload->data();
+					$filename = $foto['file_name'];
+					$postData['foto'] = $config['upload_path'].$filename;
+                }
+
 				$insert = $this->aluno->create($postData);
 
 				if($insert){
@@ -99,7 +115,7 @@ class Alunos extends CI_Controller
 			}
 		}
 
-		$data = ['aluno' => [], 'estado' => [], 'cidade' => []];
+		$data = ['aluno' => [], 'estado' => []];
 
 		$aluno['aluno'] = $postData;
 		$data['action'] = 'Create';
@@ -112,8 +128,8 @@ class Alunos extends CI_Controller
 	function update($id)
 	{
 		$data = [];
-		$date = new \DateTime('now');
 		$postData = $this->aluno->getAluno($id);
+		date_default_timezone_set('America/Sao_Paulo');
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 		
@@ -134,7 +150,6 @@ class Alunos extends CI_Controller
 				'nomeAluno'      => $this->input->post('nomeAluno'),
 				'nomeMae'        => $this->input->post('nomeMae'),
 				'dataNascimento' => $this->input->post('dataNascimento'),
-				'foto'           => '',
 				'rg'             => $this->input->post('rg'),
 				'cpf'            => $this->input->post('cpf'),
 				'cep'            => $this->input->post('cep'),
@@ -145,12 +160,25 @@ class Alunos extends CI_Controller
 				'cidade'         => $this->input->post('cidade'),
 				'estado'         => $this->input->post('estado'),
 				'email'          => $this->input->post('email'),
-				'updated_at'     => $date->format('Y-m-d H:i:s')
+				'updated_at'     => date('Y-m-d H:i:s')
 			];
 
 			//check validação
 			if($this->form_validation->run() == true){
-				$update = $this->aluno->edit($postData, $id);
+				$config['upload_path']          = 'images';
+                $config['allowed_types']        = 'gif|jpg|png';
+
+				$this->upload->initialize($config);
+
+                if ($this->upload->do_upload('foto')){
+					$foto = $this->upload->data();
+					$filename = $foto['file_name'];
+					$postData['foto'] = $filename;
+                }
+				
+				$idAluno = $this->input->post('id');
+
+				$update = $this->aluno->edit($postData, (int)$idAluno);
 
 				if($update){
 					$this->session->set_userdata('success_msg','Aluno atualizado com Sucesso!');
@@ -180,5 +208,38 @@ class Alunos extends CI_Controller
 			$data['error_msg'] = 'Algo deu errado, contate o Administrador!';
 		}
 		redirect('/alunos');
+	}
+
+	function exportCsv()
+	{
+	
+	 $file_name = 'alunos'.date('Ymd').'.csv'; 
+		header("Content-Description: File Transfer"); 
+		header("Content-Disposition: attachment; filename=$file_name"); 
+		header("Content-Type: application/csv;");
+	  
+		$data['alunos'] = $this->aluno->getAluno();
+
+		$file = fopen('php://output', 'w');
+	
+		$header = array("id", "Nome Aluno","Nome Mãe", "Foto",  "Data Nascimento", "Rg","CPF","Ra", "Cep", "Endereço", "numero",
+		"Complemento","Bairro","Cidade","Estado","Email","Data Cadastro", "Data Última Atualização",); 
+		fputcsv($file, $header);
+		foreach ($data['alunos'] as $key => $value)
+		{ 
+		  fputcsv($file, $value); 
+		}
+		fclose($file); 
+		exit; 
+	}
+
+	function uniformes()
+	{
+		$data = ['alunos' => [], 'uniformes' => []];
+
+		$data['alunos'] = $this->aluno->getAluno();
+		$data['uniformes'] = $this->aluno->getUniformes();
+
+		$this->load->view('uniformes', $data);
 	}
 }

@@ -78,14 +78,40 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   <i class="far fa-circle nav-icon"></i>
                   <p>Cadastrar Alunos</p>
                 </a>
-              </li>
+							</li>
             </ul>
 					</li>
+					<li class="nav-header"></li>
+					<li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                Uniformes
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+						<li class="nav-item">
+                <a href="<?=base_url('uniformes')?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Listar Uniformes</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?=site_url('alunos/uniformes/create')?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Cadastrar Uniformes</p>
+                </a>
+							</li>
+            </ul>
+					</li>
+
+
 					<li class="nav-header">RELATÓRIOS</li>
           <li class="nav-item">
-            <a href="https://adminlte.io/docs/3.0" class="nav-link">
+            <a href="<?php echo base_url(); ?>relatorio" class="nav-link">
               <i class="nav-icon fas fa-file"></i>
-              <p>Alunos Cadastrados</p>
+              <p>Gerar CSV</p>
             </a>
           </li>
         </ul>

@@ -31,7 +31,7 @@ class Aluno extends CI_Model
 	}
 
 	//update aluno
-	function edit( $id, $data)
+	function edit($data, $id)
 	{
 		if( $data != null && $id != null){
 			$this->db->update('alunos', $data, array('id' => $id));
@@ -57,5 +57,13 @@ class Aluno extends CI_Model
 		return $query->result_array();
 	}
 
+	function getUniformes()
+	{
+		$query = $this->db->select('*')
+						  ->from('alunos a')
+						  ->join('uniformes u', 'a.id = u.id_aluno')
+						  ->get();
 
+		return $query->result_array();
+	}
 }

@@ -16,8 +16,8 @@ Instalação Banco de Dados
 CREATE TABLE db_OM30;
 ```
 
-Após criação do Banco de Dados rodar a Query das tabelas na pasta DumpMySQL que se encontra na Raiz do projeto<br>
-Alterar o arquivo database.php que fica no diretório applications/config e iserir seu usuario e senha de acesso ao banco de dados
+Após criação do Banco de Dados rodar a Query das tabelas na pasta DumpMySQL que se encontra na Raiz do projeto e
+alterar o arquivo database.php que fica no diretório applications/config e iserir seu usuario e senha de acesso ao banco de dados
 
 ```
 'hostname' => 'localhost',

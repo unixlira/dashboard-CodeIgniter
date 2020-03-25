@@ -46,7 +46,7 @@ require_once ('header.php');
 						}
 					
 					?>
-					<input type="hidden" name="id" value="<?php echo ($aluno['id'] != null ? $aluno['id'] : '')?>">
+					<input type="hidden" name="id" value="<?=$aluno['id']?>">
 					<div class="form-group">
 						<div class="col-md-6 offset-md-3">
 							<label for="foto">Foto Perfil</label>

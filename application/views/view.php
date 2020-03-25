@@ -26,6 +26,8 @@ require_once ('header.php');
     <section>
 		<div class="container">
 			 <div class="mt-5">
+				 <img src="<?= ($aluno['foto'] != null) ? base_url('images/'.$aluno['foto']) : base_url('images/avatar.jpg') ?>" 
+				 alt="<?php echo ($aluno['nomeAluno'] != null ? $aluno['nomeAluno'] : 'Aluno Sem Foto Cadastrada')?>" width="250px" height="250px">
 				 <p><strong>Nome:</strong> <?php echo ($aluno['nomeAluno'] != null ? $aluno['nomeAluno'] : '')?></p>
 				 <p><strong>Nome da Mãe:</strong> <?php echo ($aluno['nomeMae'] != null ? $aluno['nomeMae'] : '')?></p>
 				 <p><strong>Email</strong> <?php echo ($aluno['email'] != null ? $aluno['email'] : '')?></p>

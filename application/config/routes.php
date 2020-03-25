@@ -13,3 +13,6 @@ $route['alunos/create']['post'] = 'alunos/create';
 $route['alunos/view/(:id)'] = 'alunos/view/$1';
 $route['alunos/update/(:id)']['put'] = 'alunos/update/$1';
 $route['alunos/delete/(:id)'] = 'alunos/delete/$1';
+$route['uniformes'] = 'alunos/uniformes';
+$route['relatorio'] = 'alunos/exportCsv';
+
