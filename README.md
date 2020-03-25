@@ -10,15 +10,16 @@ Fazer o clone no diretório do Apache
 ```
 git clone https://github.com/unixlira/om30.git
 ```
-
-Como Usar
-=====
-
 Instalação Banco de Dados
 
 ```
 CREATE TABLE db_OM30;
 ```
+
+Como Usar
+=====
+
+No menu lateral selecionar listar ou criar aluno
 
 
 TODO
