@@ -5,9 +5,10 @@ Sistem de Cadastro de alunos feito em codeigniter com validação de formulário
 
 Instalação
 ============
+Fazer o clone no diretório do Apache
 
 ```
-git clone https://github.com/unixlira/om30-CI.git
+git clone https://github.com/unixlira/om30.git
 ```
 
 Como Usar
@@ -18,7 +19,6 @@ Instalação Banco de Dados
 ```
 CREATE TABLE db_OM30;
 ```
-Depois Importar as Tabelas contidas na Pasta DumpMySQL
 
 
 TODO
