@@ -213,18 +213,22 @@ class Alunos extends CI_Controller
 	function exportCsv()
 	{
 	
-	 $file_name = 'alunos'.date('Ymd').'.csv'; 
+	 $file_name = 'alunos'.date('Ymd').'.xlsx'; 
 		header("Content-Description: File Transfer"); 
 		header("Content-Disposition: attachment; filename=$file_name"); 
-		header("Content-Type: application/csv;");
+		header("Content-Type: application/xlsx;");
 	  
 		$data['alunos'] = $this->aluno->getAluno();
 
 		$file = fopen('php://output', 'w');
-	
-		$header = array("id", "Nome Aluno","Nome Mãe", "Foto",  "Data Nascimento", "Rg","CPF","Ra", "Cep", "Endereço", "numero",
-		"Complemento","Bairro","Cidade","Estado","Email","Data Cadastro", "Data Última Atualização",); 
-		fputcsv($file, $header);
+
+		$headers = [];
+		
+		foreach ($data['alunos'][0] as $key => $value) {
+			array_push($headers, ucfirst($key));
+		}
+		
+		fputcsv($file, $headers);
 		foreach ($data['alunos'] as $key => $value)
 		{ 
 		  fputcsv($file, $value); 
