@@ -5,7 +5,7 @@ Sistem de Cadastro de alunos feito em codeigniter com validação de formulário
 
 Instalação
 ============
-Fazer o clone no diretório do Apache
+Fazer o clone no diretório do servidor web
 
 ```
 git clone https://github.com/unixlira/om30.git
