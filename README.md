@@ -36,4 +36,4 @@ No menu lateral selecionar listar ou criar aluno
 TODO
 ====
 
-* Work in OM30!
+* Add new Features
